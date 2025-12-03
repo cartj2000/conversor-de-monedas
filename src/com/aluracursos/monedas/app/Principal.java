@@ -37,10 +37,12 @@ public class Principal {
         while (opcion != 7) {
             try {
                 MostrarMenu();
-                if (scanner.hasNextInt()) {
-                    opcion = scanner.nextInt();
+                if (!scanner.hasNextInt()) {
+                    System.out.println("Debe ingresar un número!");
                     scanner.nextLine();
+                    continue;
                 }
+                opcion = scanner.nextInt();
 
                 if (opcion == 7) break;
 
@@ -94,9 +96,13 @@ public class Principal {
                 throw new InputMismatchException("La cantidad a convertir no es un número válido");
             }
             double cantidad = scanner.nextDouble();
+            if(cantidad>9999999) {
+                scanner.nextLine();
+                throw new InputMismatchException("La cantidad a convertir no puede ser mayor de 9,999,999");
+            }
             scanner.nextLine();
             double resultado = conversor.convertir(origen, destino, cantidad); // se llama la lógica del negocio
-            System.out.println("Resultado: " + String.format("%,.2f", resultado) + " " + destino);
+            System.out.println("Resultado: " + String.format("%,.2f", cantidad)+ " " + origen + " Equivalen a: " + String.format("%,.2f", resultado) + " " + destino);
         } catch (InputMismatchException e) {
             System.out.println("\n Error en la entrada de la cantidad: " + e.getMessage());
         } catch (IllegalArgumentException e) {  // se captura la validación

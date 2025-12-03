@@ -20,7 +20,7 @@ public class PruebaBuscadorDeTasas {
         FileWriter escritura;
 
         try {
-            escritura = new FileWriter("prueba.txt");
+            escritura = new FileWriter("prueba.txt",true);
             escritura.write("El resultado de la prueba es: " + resultado);
             escritura.close();
         } catch (IOException e) {
