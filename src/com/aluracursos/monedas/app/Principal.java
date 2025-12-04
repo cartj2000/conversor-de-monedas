@@ -3,7 +3,7 @@ package com.aluracursos.monedas.app;
 import com.aluracursos.monedas.excepcion.ErrorEnConversorException;
 import com.aluracursos.monedas.logica.Conversor;
 import com.aluracursos.monedas.servicio.BuscadorDeTasasDelJson;
-import com.aluracursos.monedas.servicio.PruebaBuscadorDeTasas;
+import com.aluracursos.monedas.servicio.PruebaConversor;
 import com.aluracursos.monedas.servicio.BuscadorDeTasasFake;
 
 import java.util.InputMismatchException;
@@ -23,14 +23,6 @@ public class Principal {
         // BuscadorDeTasas servicio = new BuscadorDeTasasDelJson(apiKey);
         // Conversor conversor = new Conversor(servicio);
         Conversor conversor = new Conversor(new BuscadorDeTasasDelJson(apiKey));
-
-        // Inyección de dependencia:
-        // Al crear la instancia prueba pasándo la implementación fake
-        // del buscador de tasas
-        // BuscadorDeTasas buscador = new BuscadorDeTasasFake();
-        // PruebaBuscadorDeTasas prueba = new PruebaBuscadorDeTasas(buscador);
-        PruebaBuscadorDeTasas prueba = new PruebaBuscadorDeTasas(new BuscadorDeTasasFake());
-        prueba.ejecutarPrueba();
 
         System.out.println("Conversor de Moneda -> Inicio ...");
         int opcion = 0;
@@ -53,6 +45,11 @@ public class Principal {
                     case 4 -> { origen = "BRL"; destino = "USD"; manejarConversion(conversor,scanner,origen,destino);}
                     case 5 -> { origen = "USD"; destino = "COP"; manejarConversion(conversor,scanner,origen,destino);}
                     case 6 -> { origen = "COP"; destino = "USD"; manejarConversion(conversor,scanner,origen,destino);}
+                    case 888 -> {
+                        System.out.println("Conversor de Moneda -> Probando ...");
+                        PruebaConversor prueba = new PruebaConversor();
+                        prueba.ejecutarPrueba();
+                    }
                     default -> {
                         System.out.println("Opción inválida.");
                         scanner.nextLine();
@@ -102,7 +99,7 @@ public class Principal {
             }
             scanner.nextLine();
             double resultado = conversor.convertir(origen, destino, cantidad); // se llama la lógica del negocio
-            System.out.println("Resultado: " + String.format("%,.2f", cantidad)+ " " + origen + " Equivalen a: " + String.format("%,.2f", resultado) + " " + destino);
+            System.out.println("Resultado: " + String.format("%,.5f", cantidad) + " " + origen + " Equivalen a: " + String.format("%,.5f", resultado) + " " + destino);
         } catch (InputMismatchException e) {
             System.out.println("\n Error en la entrada de la cantidad: " + e.getMessage());
         } catch (IllegalArgumentException e) {  // se captura la validación

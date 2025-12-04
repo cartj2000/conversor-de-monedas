@@ -44,12 +44,12 @@ public class BuscadorDeTasasDelJson implements BuscadorDeTasas {
             }
 
         } catch (IOException e) {               // error de red
-            throw new ErrorEnConversorException("Error de red",e);
+            throw new ErrorEnConversorException("Error de red" + e.getMessage());
         } catch (InterruptedException e) {      // hilo interrumpido
             Thread.currentThread().interrupt();
-            throw new ErrorEnConversorException("Busqueda interrumpida",e);
+            throw new ErrorEnConversorException("Búsqueda interrumpida");
         } catch (Exception e) {
-            throw new ErrorEnConversorException("Error al obtener las tasas",e);
+            throw new ErrorEnConversorException("Error al obtener las tasas" + e.getMessage());
         }
     }
 }

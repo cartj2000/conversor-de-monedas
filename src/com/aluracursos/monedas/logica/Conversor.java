@@ -5,10 +5,11 @@ import com.aluracursos.monedas.servicio.BuscadorDeTasas;
 // lógica del negocio
 public class Conversor {
 
-    private final BuscadorDeTasas buscador;
+    private final BuscadorDeTasas buscador; // se aplica inmutabilidad
 
+    // Dependencia obligatoria: firma del constructor clara (parámetros: número + tipo + orden)
     // se crea el constructor con inyección de dependencia
-    // buscador se usa para implementar el servicio de busqueda tanto real como fake
+    // buscador se usa para implementar el servicio de búsqueda tanto real como fake
     public Conversor(BuscadorDeTasas buscador) {
         this.buscador = buscador;
     }
