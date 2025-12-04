@@ -3,9 +3,10 @@ package com.aluracursos.monedas.app;
 import com.aluracursos.monedas.excepcion.ErrorEnConversorException;
 import com.aluracursos.monedas.logica.Conversor;
 import com.aluracursos.monedas.servicio.BuscadorDeTasasDelJson;
-import com.aluracursos.monedas.servicio.PruebaConversor;
 import com.aluracursos.monedas.servicio.BuscadorDeTasasFake;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -45,10 +46,10 @@ public class Principal {
                     case 4 -> { origen = "BRL"; destino = "USD"; manejarConversion(conversor,scanner,origen,destino);}
                     case 5 -> { origen = "USD"; destino = "COP"; manejarConversion(conversor,scanner,origen,destino);}
                     case 6 -> { origen = "COP"; destino = "USD"; manejarConversion(conversor,scanner,origen,destino);}
-                    case 888 -> {
+                    case 0 -> {
                         System.out.println("Conversor de Moneda -> Probando ...");
-                        PruebaConversor prueba = new PruebaConversor();
-                        prueba.ejecutarPrueba();
+                        ejecutarPrueba();
+                        continue;
                     }
                     default -> {
                         System.out.println("Opción inválida.");
@@ -80,6 +81,7 @@ public class Principal {
         System.out.println("4) Real Brasileño => Dólar");
         System.out.println("5) Dólar => Peso colombiano");
         System.out.println("6) Peso colombiano => Dólar");
+        System.out.println("0) Ejecutar pruebas automáticas");
         System.out.println("7) Salir");
         System.out.println("Elija una opción válida:");
         System.out.println("***********************************************");
@@ -114,6 +116,28 @@ public class Principal {
         } catch (Exception e) {
             System.err.println("\n Error inesperado en la conversión: " + e.getMessage());
         }
+    }
+    private static void ejecutarPrueba(){
+
+        Conversor conversorTest = new Conversor(new BuscadorDeTasasFake());
+
+        double primerTest = conversorTest.convertir("USD", "COP", 100);
+        double segundoTest = conversorTest.convertir("USD", "BRL", 500);
+
+        assert primerTest == 380000 : "USD A COP FALLÓ";
+        assert segundoTest == 2500 : "USD A BRL FALLÓ";
+
+        FileWriter escritura;
+
+        try {
+            escritura = new FileWriter("prueba.txt",true);
+            escritura.write("El resultado de la primera prueba es: " + String.format("%,.5f", primerTest) + "\n");
+            escritura.write("El resultado de la segunda prueba es: " + String.format("%,.5f", segundoTest) + "\n");
+            escritura.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

@@ -18,6 +18,10 @@ public class Conversor {
     // throw IllegalArgumentException
     public double convertir(String origen, String destino, double cantidad) {
         // se valida la entrada con respecto a la lógica del negocio
+        if (origen == null || destino == null || origen.isBlank() || destino.isBlank()) {
+            throw new IllegalArgumentException("Las monedas origen/destino no pueden ser nulas ni vacías");
+        }
+
         if (cantidad < 0) {
             throw new IllegalArgumentException("Valor a convertir negativo -> debe ser positivo !");
         }

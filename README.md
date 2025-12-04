@@ -1,64 +1,69 @@
-<h1 align="center">Desafio Conversor De Monedas</h1>
+🪙 Conversor de Monedas — Challenge
+<p align="center"> <strong>Desafío Conversor de Monedas</strong><br> Proyecto Java con consumo de API, JSON, pruebas y arquitectura limpia. </p>
+🛠 Funcionalidades del proyecto
 
-<h2 align="center">
-:white_check_mark:Desafio Conversor de Monedas:white_check_mark:</h2>
-##:hammer:Funcionalidades del proyecto
--Realizar la conversión entre dos tipos de moneda
--Evitar la entrada de datos incorrecta
--Mostar el resultado claro con separador de miles
--Manejo de excepciones personalizado
--Aplicación de inyección de dependencias
--Estructura de paquetes
--Organización por capas
--Código de prueba
-##:hammer:
--El usuario digita un número entre 1 y 6 para seleccionar la conversión
--Si se digita el código 888 se realiza una prueba
--Al oprimir 7 el sistema termina
-<h3 align="center">:rocket:Tecnologias usadas:
--Java 17: código
--ExchangeRate API: manejo de tasas 
--Google Gson: procesamiento del JSON
--SOLID: {
-SRP: Single Responsibility Principle
-OCP:Open Close Principle
-DIP:Dependency Inversion Principle
-módulos de alto nivel 
-no deben depender
-de módulos de bajo nivel
-ambos deben depender 
-de abstracciones (interfaces)
+✔ Conversión entre dos tipos de moneda
+
+✔ Evita entrada de datos inválidos
+
+✔ Resultado formateado con separador de miles
+
+✔ Manejo de excepciones personalizado
+
+✔ Inyección de dependencias (DI)
+
+✔ Arquitectura por capas y paquetes
+
+✔ Implementaciones reales y fake para pruebas
+
+📌 Operación del programa
+Acción	Función
+Usuario ingresa un número entre 1 y 6	Selecciona tipo de conversión
+Ingreso del código 0	Ejecuta pruebas automáticas
+Ingreso del número 7	Finaliza la aplicación
+🚀 Tecnologías usadas
+Tecnología	Uso
+Java 17	Lógica principal del sistema
+ExchangeRate API	Obtención de tasas reales
+Google Gson	Procesamiento de JSON
+SOLID / Arquitectura Limpia	Diseño desacoplado, extensible y testeable
+🧠 Principios aplicados
+
+SRP — Single Responsibility Principle
+Cada clase tiene una única responsabilidad.
+
+OCP — Open/Closed Principle
+El Conversor permite nuevas fuentes de tasas sin ser modificado.
+👉 Abierto a extensión | Cerrado a modificación
+
+DIP — Dependency Inversion Principle
+Módulos de alto nivel no dependen de módulos de bajo nivel. 
+Ambos deben depender de abstracciones (interfaces).
 usando:
-DI: suministrar esas abstracciones a una clase
-IoC: organizar la creación (instancias)
-}
--Open / Closed Principle (OCP):
-para usar diferentes fuentes sin tocar el Conversor
-El Conversor está abierto a extensión 
-y se puede pasar otra implementación
-El Conversor está cerrado a modificación 
-y no hay que reescribirlo
--Inversión de Control (IoC):
-El Conversor no crea el buscador, 
-sino que es entregado desde afuera 
-a través del contrato o interfaz
--Inyección directa (DI):
-Se inyecta la dependencia desde fuera
-para implementar la IoC
-Todo para crear un sistema:
-desacoplado (DI, IoC)
-extensible sin modificar (OCP)
-testeable (BuscadorDeTasasFake)
-</h3>
-<h4 align="center"> Buenas prácticas:
--constructor inyección para dependencia obligatoria
--uso de interfaz BuscadorDeTasas para cumplir OCP
--no se usa new en la clase de negocio
--encapsular en lo posible el manejo de errores
--clases pequeñas con responsabilidad única (SRP) para aplicar OCP
--la clase principal crea/compone las dependencias (IoC)
--Conversor no crea su dependencia, la recibe por constructor (DI)
--Se puede añadir otra implementación BuscadordeTasasFake u otra sin tocar Conversor (OCP)
+IoC — Inversión de Control
+El Conversor no crea el buscador, lo recibe externamente.
+DI — Dependency Injection
+La dependencia se suministra mediante el constructor del Conversor.
+
+📌 Esto permite:
+
+Desacoplamiento	Módulos independientes y mantenibles
+Extensión sin romper código	Se pueden agregar nuevas fuentes de tasas
+Testabilidad	BuscadorDeTasasFake permite pruebas sin API
+
+🏆 Buenas prácticas aplicadas
+
+Constructor injection para dependencia obligatoria
+
+BuscadorDeTasas como interfaz (OCP)
+
+Conversor no instancia servicios, solo los recibe (DI/IoC)
+
+Manejo de errores encapsulado
+
+Clases pequeñas con responsabilidad única (SRP) para aplicar OCP
+
+La clase Principal crea las dependencias (IoC)
 
 
 
