@@ -29,7 +29,7 @@ public class Principal {
         int opcion = 0;
         while (opcion != 7) {
             try {
-                MostrarMenu();
+                mostrarMenu();
                 if (!scanner.hasNextInt()) {
                     System.out.println("Debe ingresar un número!");
                     scanner.nextLine();
@@ -72,7 +72,7 @@ public class Principal {
         System.out.println("Programa finalizado");
     }
 
-    private static void MostrarMenu() {
+    private static void mostrarMenu() {
         System.out.println("***********************************************");
         System.out.println("Sea bienvenido/a al Conversor de Moneda =]");
         System.out.println("1) Dólar => Peso argentino");

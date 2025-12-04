@@ -47,18 +47,18 @@ public class BuscadorDeTasasDelJson implements BuscadorDeTasas {
             JsonElement conversion = json.get("conversion_result");
 
             if (conversion == null || conversion.isJsonNull()) {
-                throw new RuntimeException("Error: no se encontró JSON");
+                throw new ErrorEnConversorException("respuesta JSON no contiene conversion_result");
             } else {
                 return conversion.getAsDouble();
             }
 
         } catch (IOException e) {               // error de red
-            throw new ErrorEnConversorException("Error de red" + e.getMessage());
+            throw new ErrorEnConversorException("Error de red: " + e.getMessage());
         } catch (InterruptedException e) {      // hilo interrumpido
             Thread.currentThread().interrupt();
             throw new ErrorEnConversorException("Búsqueda interrumpida");
         } catch (Exception e) {
-            throw new ErrorEnConversorException("Error al obtener las tasas" + e.getMessage());
+            throw new ErrorEnConversorException("Error al obtener las tasas: " + e.getMessage());
         }
     }
 }
