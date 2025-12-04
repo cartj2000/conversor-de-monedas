@@ -38,16 +38,22 @@ public class BuscadorDeTasasDelJson implements BuscadorDeTasas {
 
             JsonObject json = JsonParser.parseString(respuesta.body()).getAsJsonObject();
 
-            if (json == null)
-                throw new ErrorEnConversorException("JSON inválido");
+            if (json == null) {
+                throw new ErrorEnConversorException("Respuesta JSON inválida o vacía");
+            }
 
-            if (!json.has("conversion_result"))
+            if (!json.has("conversion_result")) {
                 throw new ErrorEnConversorException("API sin campo conversion_result.");
+            }
+
+            if (json.has("conversion_result") && json.get("conversion_result").getAsString().equals("error")) {
+                throw new ErrorEnConversorException("API con error: " + json.get("error-type").getAsString());
+            }
 
             JsonElement conversion = json.get("conversion_result");
 
             if (conversion == null || conversion.isJsonNull()) {
-                throw new ErrorEnConversorException("respuesta JSON no contiene conversion_result");
+                throw new ErrorEnConversorException("error de respuesta JSON");
             } else {
                 return conversion.getAsDouble();
             }
