@@ -32,7 +32,7 @@ Ingreso del código 0:	Ejecuta pruebas automáticas
 Ingreso del número 7:	Finaliza la aplicación
 
 
-
+## :rocket:
 🚀 Tecnologías usadas :rocket:
 
 Java 17:	Lógica principal del sistema
@@ -108,28 +108,15 @@ La clase Principal crea las dependencias (IoC)
 Estructura de paquetes:
 
 src/
+└── com/aluracursos/monedas/
+├── app/Principal.java
+├── excepcion/ErrorEnConversorException.java
+├── servicio/
+│   ├── BuscadorDeTasas.java
+│   ├── BuscadorDeTasasDelJson.java
+│   └── BuscadorDeTasasFake.java
+└── logica/Conversor.java
 
----->>> com/aluracursos/monedas/
-
--------->>> app/
-
------------->>> Principal.java
-
--------->>> excepcion/
-
------------->>> ErrorEnConversorException.java
-
--------->>> logica/
-
------------->>> Conversor.java
-
--------->>> servicio/
-
------------->>> BuscadorDeTasas.java (interfaz)
-
------------->>> BuscadorDeTasasDelJson.java (implementación real)
-
------------->>> BuscadorDeTasasFake.java (implementación fake)
 
 ## :flashlight:
 - Acceso al proyecto: a través de GitHub
@@ -140,7 +127,7 @@ src/
 👉 Github: cartj2000
 👉 Linkedin: CARLOS ARTURO TORRES JARA 
 
-
+## :heavy_exclamation_mark:
 Agradecimientos:
 
 - Alura Latam: Equipo docente
