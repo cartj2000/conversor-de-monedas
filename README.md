@@ -27,7 +27,7 @@
 
 Usuario ingresa un número entre 1 y 6:	Selecciona tipo de conversión
 
-Ingreso del código 0:	Ejecuta pruebas automáticas
+Ingreso del código 0:	Ejecuta pruebas automáticas y las agrega al archivo prueba.txt
 
 Ingreso del número 7:	Finaliza la aplicación
 
