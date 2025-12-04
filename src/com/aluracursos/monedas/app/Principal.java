@@ -124,8 +124,8 @@ public class Principal {
         double primerTest = conversorTest.convertir("USD", "COP", 100);
         double segundoTest = conversorTest.convertir("USD", "BRL", 500);
 
-        assert primerTest == 380000 : "USD A COP FALLÓ";
-        assert segundoTest == 2500 : "USD A BRL FALLÓ";
+        if (primerTest != 380000) throw new AssertionError("USD A COP FALLÓ");
+        if (segundoTest != 2500) throw new AssertionError("USD A BRL FALLÓ");
 
         FileWriter escritura;
 

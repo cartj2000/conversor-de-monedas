@@ -65,5 +65,17 @@ Clases pequeñas con responsabilidad única (SRP) para aplicar OCP
 
 La clase Principal crea las dependencias (IoC)
 
+Estructura de paquetes:
 
-
+src/
+---->>> com/aluracursos/monedas/
+-------->>> app/
+------------>>> Principal.java
+-------->>> excepcion/
+------------>>> ErrorEnConversorException.java
+-------->>> logica/
+------------>>> Conversor.java
+-------->>> servicio/
+------------>>> BuscadorDeTasas.java (interfaz)
+------------>>> BuscadorDeTasasDelJson.java (implementación real)
+------------>>> BuscadorDeTasasFake.java (implementación fake)

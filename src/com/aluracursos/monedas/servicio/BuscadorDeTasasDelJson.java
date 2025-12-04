@@ -33,12 +33,21 @@ public class BuscadorDeTasasDelJson implements BuscadorDeTasas {
 
             HttpResponse<String> respuesta = cliente.send(solicitud, HttpResponse.BodyHandlers.ofString());
 
+            if (respuesta.statusCode() != 200)
+                throw new ErrorEnConversorException("Error HTTP " + respuesta.statusCode());
+
             JsonObject json = JsonParser.parseString(respuesta.body()).getAsJsonObject();
+
+            if (json == null)
+                throw new ErrorEnConversorException("JSON inválido");
+
+            if (!json.has("conversion_result"))
+                throw new ErrorEnConversorException("API sin campo conversion_result.");
 
             JsonElement conversion = json.get("conversion_result");
 
             if (conversion == null || conversion.isJsonNull()) {
-                throw new RuntimeException("Error: no se encontró 'conversion_result'.");
+                throw new RuntimeException("Error: no se encontró JSON");
             } else {
                 return conversion.getAsDouble();
             }
