@@ -109,12 +109,19 @@ Estructura de paquetes:
 
 src/
 └── com/aluracursos/monedas/
+
 ├── app/Principal.java
+
 ├── excepcion/ErrorEnConversorException.java
+
 ├── servicio/
+
 │   ├── BuscadorDeTasas.java
+
 │   ├── BuscadorDeTasasDelJson.java
+
 │   └── BuscadorDeTasasFake.java
+
 └── logica/Conversor.java
 
 
@@ -123,13 +130,14 @@ src/
 - Estado del proyecto: funcional 100%
 - Características de la aplicación: Desafio conversor de monedas Alura Latam
 - Desarrolladores: Carlos Arturo Torres Jara
-👉 Licencia: código abierto
-👉 Github: cartj2000
-👉 Linkedin: CARLOS ARTURO TORRES JARA 
+- Licencia: código abierto
+- Github: cartj2000
+- Linkedin: CARLOS ARTURO TORRES JARA
+
 
 ## :heavy_exclamation_mark:
 Agradecimientos:
 
-- Alura Latam: Equipo docente
-- Oracle: programa One Oracle Next Education
-- ExchangeRate-API: API de conversión de monedas
+- 👉Alura Latam: Equipo docente
+- 👉Oracle: programa One Oracle Next Education
+- 👉ExchangeRate-API: API de conversión de monedas
